@@ -21,13 +21,11 @@ function Header() {
                   className="header__search"
                   aria-label="Search movies"
                 />
-                <button 
+                <button
+                  type="button"
                   className="header__button"
-                >
-                <FaSearch
-                  className="header__search-icon"
-                  aria-hidden="true"
-                />
+                  aria-label="Search movies">
+                    <FaSearch aria-hidden="true" />
                 </button>
             </div>
         </div>
