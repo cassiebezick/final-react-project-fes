@@ -31,7 +31,7 @@ header {
     margin: auto;
     align-items: center;
     justify-content: space-between;
-    padding: 6vh 10vw;
+    padding: 4vh 6vw;
 
 }
 
@@ -252,8 +252,14 @@ header {
 /* MOVIES BODY HEADER */
 
 .movieheader__wrapper {
-    background-color: var(--darkgray);
-    opacity: .5;
+    background-color: color-mix(
+    in srgb,
+    var(--darkgray) 60%,
+    transparent
+  );
+  border-radius: 12px;
+  padding: 4vh 6vw;
+
 }
 
 
