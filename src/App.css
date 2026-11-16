@@ -245,6 +245,26 @@ header {
 
 
 
+
+
+
+
+/* MOVIES BODY HEADER */
+
+.movieheader__wrapper {
+    background-color: var(--darkgray);
+    opacity: .5;
+}
+
+
+
+
+
+
+
+
+
+
 /* MOVIE GRID  */
 
 .movies {
@@ -316,3 +336,8 @@ header {
 
 /* FOOTER */
 
+footer {
+    background-color: var(--darkgray);
+    width: 100%;
+    height: 5vh;
+}
