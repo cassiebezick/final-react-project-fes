@@ -3,18 +3,18 @@ import { useSearchParams } from "react-router";
 import MovieHeader from "./MovieHeader";
 import MoviesHomeGrid from "./MoviesHomeGrid";
 
+
+const DEFAULT_QUERY = "mountains";
+
 function Home() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("q")?.trim() ?? "";
+  const submittedQuery = searchParams.get("q")?.trim();
+  const query = submittedQuery || DEFAULT_QUERY;
 
   return (
     <main className="page-container">
       <MovieHeader />
-      {query ? (
-        <MovieSearchResults key={query} query={query} />
-      ) : (
-        <MoviesHomeGrid />
-      )}
+      <MovieSearchResults key={query} query={query} />
     </main>
   );
 }

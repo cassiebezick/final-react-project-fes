@@ -79,11 +79,13 @@ function Movies({ movies, isLoading = false }) {
       </div>
 
      {isLoading && <p role="status">Loading movies…</p>}
-
-      <div className="movies__grid" aria-busy={isLoading}>
-        {cards}
-      </div>
-      
+     
+    <div className="movies__grid">
+      {movies.map((movie) => (
+        <MovieCard key={movie.imdbID} movie={movie} />
+      ))}
+    </div>
+          
     </section>
   );
 }
