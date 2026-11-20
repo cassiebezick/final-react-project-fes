@@ -1,4 +1,4 @@
-import poster from "../assets/northbound.png";
+import northboundPoster from "../assets/northbound.png";
 import { FiArrowUpRight, FiArrowRight, FiFilm } from "react-icons/fi";
 import { Link } from "react-router";
 
