@@ -1,0 +1,9 @@
+.movie-poster__fallback {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2 / 3;
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: var(--darkgray);
+  text-align: center;
+}

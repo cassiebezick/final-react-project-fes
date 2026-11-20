@@ -1,0 +1,33 @@
+.movie-card-skeleton {
+  overflow: hidden;
+}
+
+.movie-card-skeleton__poster,
+.movie-card-skeleton__title,
+.movie-card-skeleton__year {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.movie-card-skeleton__poster {
+  aspect-ratio: 2 / 3;
+}
+
+.movie-card-skeleton__body {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+}
+
+.movie-card-skeleton__title,
+.movie-card-skeleton__year {
+  height: 12px;
+  border-radius: 4px;
+}
+
+.movie-card-skeleton__title {
+  width: 75%;
+}
+
+.movie-card-skeleton__year {
+  width: 30%;
+}

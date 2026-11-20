@@ -1,7 +1,10 @@
 import { useState } from "react";
 import MovieCard from "./MovieCard";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
-function Movies({ movies }) {
+
+
+function Movies({ movies, isLoading = false }) {
   
   const [sortBy, setSortBy] = useState("default");
 
@@ -31,6 +34,22 @@ function Movies({ movies }) {
     default:
     break;
 }
+
+    let cards;
+
+    if (isLoading) {
+      cards = Array.from({ length: 6 }, (_, index) => (
+        <MovieCardSkeleton key={index} />
+      ));
+    } else if (movies) {
+      cards = movies.map((movie) => (
+        <MovieCard key={movie.imdbID} movie={movie} />
+      ));
+    } else {
+      cards = Array.from({ length: 6 }, (_, index) => (
+        <MovieCard key={index} />
+      ));
+    }
   
   return (
     <section className="movies" aria-labelledby="movies-heading">
@@ -59,12 +78,10 @@ function Movies({ movies }) {
         </div>
       </div>
 
-      <div className="movies__grid">
-        {movies
-          ? sortedMovies.map((movie) => (
-              <MovieCard key={movie.imdbID} movie={movie} />
-            ))
-          : Array.from({ length: 6 }, (_, index) => <MovieCard key={index} />)}
+     {isLoading && <p role="status">Loading movies…</p>}
+
+      <div className="movies__grid" aria-busy={isLoading}>
+        {cards}
       </div>
       
     </section>

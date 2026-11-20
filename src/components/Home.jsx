@@ -39,6 +39,7 @@ function MovieSearchResults({ query }) {
         }
 
         setMovies(data.movies);
+
       } catch (error) {
         if (!controller.signal.aborted) {
           setError(error.message);
@@ -51,7 +52,7 @@ function MovieSearchResults({ query }) {
   }, [query]);
 
   if (error) return <p role="alert">{error}</p>;
-  if (movies === null) return <p role="status">Searching for “{query}”…</p>;
+  if (movies === null) return <MoviesHomeGrid isLoading />;
   if (movies.length === 0) return <p>No movies found for “{query}”.</p>;
 
   return <MoviesHomeGrid movies={movies} />;

@@ -1,6 +1,7 @@
 import northboundPoster from "../assets/northbound.png";
 import { FiArrowUpRight, FiArrowRight, FiFilm } from "react-icons/fi";
 import { Link, useLocation } from "react-router";
+import MoviePoster from "./MoviePoster";
 
 function MovieCard( { movie } ) {
   const title = movie?.Title ?? "Northbound";
@@ -22,10 +23,10 @@ function MovieCard( { movie } ) {
         </span>
       </div>
 
-      <img
-        src={poster}
-        alt={`${title} movie poster`}
+      <MoviePoster
         className="movie-card__poster"
+        src={poster}
+        title={title}
       />
 
       <div className="movie-card__content">

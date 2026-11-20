@@ -80,10 +80,10 @@ function MovieDetails() {
           <>
 
         <section className="movie-details__hero" aria-labelledby="movie-title">
-          <img
+          <MoviePoster
             className="movie-details__poster"
             src={movie.Poster}
-            alt={`${movie.Title} movie poster`}
+            title={movie.Title}
           />
 
           <div className="movie-details__overview">
