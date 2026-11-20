@@ -35,21 +35,13 @@ function Movies({ movies, isLoading = false }) {
     break;
 }
 
-    let cards;
-
-    if (isLoading) {
-      cards = Array.from({ length: 6 }, (_, index) => (
-        <MovieCardSkeleton key={index} />
-      ));
-    } else if (movies) {
-      cards = movies.map((movie) => (
-        <MovieCard key={movie.imdbID} movie={movie} />
-      ));
-    } else {
-      cards = Array.from({ length: 6 }, (_, index) => (
-        <MovieCard key={index} />
-      ));
-    }
+    const cards = isLoading
+      ? Array.from({ length: 6 }, (_, index) => (
+          <MovieCardSkeleton key={index} />
+        ))
+      : sortedMovies.map((movie) => (
+          <MovieCard key={movie.imdbID} movie={movie} />
+        ));
   
   return (
     <section className="movies" aria-labelledby="movies-heading">
@@ -79,12 +71,8 @@ function Movies({ movies, isLoading = false }) {
       </div>
 
      {isLoading && <p role="status">Loading movies…</p>}
-     
-    <div className="movies__grid">
-      {movies.map((movie) => (
-        <MovieCard key={movie.imdbID} movie={movie} />
-      ))}
-    </div>
+
+    <div className="movies__grid">{cards}</div>
           
     </section>
   );
