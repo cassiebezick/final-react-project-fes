@@ -1,6 +1,7 @@
 import { FiArrowLeft, FiStar } from "react-icons/fi";
 import poster from "../assets/northbound.png";
 import "./MovieDetails.css";
+import { Link } from "react-router";
 
 const sampleMovie = {
   Title: "Northbound",
