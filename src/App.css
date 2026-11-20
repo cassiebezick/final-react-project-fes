@@ -339,6 +339,14 @@ select:focus-visible {
   text-decoration: none;
 }
 
+.movie-card__button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 16px;
+}
+
 .movie-card__button svg {
   flex-shrink: 0;
   color: var(--brightorange);
