@@ -1,15 +1,19 @@
-
 function MovieHeader() {
   return (
-    <div className="movies movieheader__wrapper">
-      <section aria-labelledby="movies-heading">
-        <div className="movies__heading">
-          <p className="movies__eyebrow">Explore the collection</p>
-          <h1 id="movies-heading">Find your next great movie.</h1>
-        </div>
-        </section>
-    </div>
+    <section className="movie-hero" aria-labelledby="hero-heading">
+      <div className="movie-hero__content">
+        <p className="movies__eyebrow">Explore the collection</p>
+
+        <h1 id="hero-heading">
+          Find your next <span>great movie.</span>
+        </h1>
+
+        <p className="movie-hero__description">
+          Discover a story worth getting lost in.
+        </p>
+      </div>
+    </section>
   );
 }
 
-export default MovieHeader
+export default MovieHeader;

@@ -1,16 +1,17 @@
 import poster from "../assets/northbound.png";
 import { FiArrowUpRight, FiArrowRight, FiFilm } from "react-icons/fi";
 
-
 function MovieCard() {
   return (
     <article className="movie-card">
       <div className="movie-card__ribbon" aria-hidden="true" />
 
-      <div className="movie-card__header">
-        <span className="movie-card__label">Scene Scout</span>
+      <div className="movie-card__header" aria-hidden="true">
+        <span className="movie-card__label">
+          <FiFilm />
+        </span>
 
-        <span className="movie-card__arrow" aria-hidden="true">
+        <span className="movie-card__arrow">
           <FiArrowUpRight />
         </span>
       </div>
@@ -22,19 +23,15 @@ function MovieCard() {
       />
 
       <div className="movie-card__content">
-        <h2 className="movie-card__title">Northbound</h2>
+        <h3 className="movie-card__title">Northbound</h3>
+        <p className="movie-card__year">2024</p>
 
-        <p className="movie-card__metadata">
-          2024 · Adventure, Drama
-        </p>
-
-        <p className="movie-card__description">
-          A journey beyond the familiar, into the wild.
-        </p>
-
-        <button type="button" className="movie-card__button">
-          <FiFilm aria-hidden="true" />
-          <span>Explore movie</span>
+        <button
+          type="button"
+          className="movie-card__button"
+          aria-label="View details for Northbound"
+        >
+          <span>View details</span>
           <FiArrowRight aria-hidden="true" />
         </button>
       </div>
@@ -43,4 +40,3 @@ function MovieCard() {
 }
 
 export default MovieCard;
-
