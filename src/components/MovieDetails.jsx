@@ -1,6 +1,4 @@
 import { FiArrowLeft, FiStar } from "react-icons/fi";
-import Header from "./Header";
-import Footer from "./Footer";
 import poster from "../assets/northbound.png";
 import "./MovieDetails.css";
 
@@ -23,13 +21,11 @@ function MovieDetails({ movie = sampleMovie }) {
 
   return (
     <>
-      <Header />
-
       <main className="page-container movie-details">
-        <a className="movie-details__back" href="/">
+        <Link className="movie-details__back" to="/">
           <FiArrowLeft aria-hidden="true" />
           Back to movies
-        </a>
+        </Link>
 
         <section className="movie-details__hero" aria-labelledby="movie-title">
           <img
@@ -81,8 +77,6 @@ function MovieDetails({ movie = sampleMovie }) {
           </dl>
         </section>
       </main>
-
-      <Footer />
     </>
   );
 }

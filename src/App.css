@@ -336,6 +336,7 @@ select:focus-visible {
   text-align: left;
   font-size: 13px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .movie-card__button svg {

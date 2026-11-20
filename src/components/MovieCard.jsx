@@ -1,5 +1,6 @@
 import poster from "../assets/northbound.png";
 import { FiArrowUpRight, FiArrowRight, FiFilm } from "react-icons/fi";
+import { Link } from "react-router";
 
 function MovieCard() {
   return (
@@ -26,14 +27,16 @@ function MovieCard() {
         <h3 className="movie-card__title">Northbound</h3>
         <p className="movie-card__year">2024</p>
 
-        <button
-          type="button"
-          className="movie-card__button"
-          aria-label="View details for Northbound"
-        >
-          <span>View details</span>
-          <FiArrowRight aria-hidden="true" />
-        </button>
+
+      <Link
+        className="movie-card__button"
+        to="/movies/northbound"
+        aria-label="View details for Northbound"
+      >
+        <span>View details</span>
+        <FiArrowRight aria-hidden="true" />
+      </Link>
+
       </div>
     </article>
   );

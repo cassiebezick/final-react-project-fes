@@ -1,14 +1,15 @@
 import logo from "../assets/movie.gif";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router";
 
 function Header() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a className="site-header__brand" href="/">
+        <Link to="/" className="site-header__brand"> 
           <img src={logo} alt="" />
           <span>scenescout</span>
-        </a>
+        </Link>
 
         <div className="header__search-wrapper">
           <input
