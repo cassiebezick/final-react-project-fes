@@ -1,7 +1,10 @@
+import { Link, useLocation, useParams } from "react-router";
+import { useEffect, useState } from "react";
+
 import { FiArrowLeft, FiStar } from "react-icons/fi";
 import poster from "../assets/northbound.png";
+
 import "./MovieDetails.css";
-import { Link } from "react-router";
 
 const sampleMovie = {
   Title: "Northbound",
@@ -17,16 +20,64 @@ const sampleMovie = {
   Poster: poster,
 };
 
-function MovieDetails({ movie = sampleMovie }) {
-  const genres = movie.Genre.split(",").map((genre) => genre.trim());
+function MovieDetails() {
+  const { imdbID } = useParams();
+  const isSampleMovie = imdbID === "northbound";
+  const [result, setResult] = useState(null);
+  const { search } = useLocation();
+
+    useEffect(() => {
+    if (isSampleMovie) return;
+
+    const controller = new AbortController();
+
+    async function loadMovie() {
+      try {
+        const params = new URLSearchParams({ id: imdbID });
+        const response = await fetch(`/api/movies?${params}`, {
+          signal: controller.signal,
+        });
+        const data = await response.json();
+
+        if (!response.ok || !data.movie) {
+          throw new Error(data.error || "Could not load this movie.");
+        }
+
+        setResult({ imdbID, movie: data.movie });
+
+      } catch (error) {
+        if (controller.signal.aborted) return;
+
+        setResult({ imdbID, error: error.message });
+      }
+    }
+
+    loadMovie();
+
+    return () => controller.abort();
+  }, [imdbID, isSampleMovie]);
+
+  const currentResult = result?.imdbID === imdbID ? result : null;
+  const movie = isSampleMovie ? sampleMovie : currentResult?.movie;
+  const error = currentResult?.error;
+
+  const genres =
+    movie?.Genre && movie.Genre !== "N/A"
+      ? movie.Genre.split(",").map((genre) => genre.trim())
+      : [];
 
   return (
     <>
       <main className="page-container movie-details">
-        <Link className="movie-details__back" to="/">
+        <Link className="movie-details__back" to={`/${search}`}>
           <FiArrowLeft aria-hidden="true" />
           Back to movies
         </Link>
+        {error && <p role="alert">{error}</p>}
+        {!movie && !error && <p role="status">Loading movie details…</p>}
+
+      {movie && (
+          <>
 
         <section className="movie-details__hero" aria-labelledby="movie-title">
           <img
@@ -77,6 +128,10 @@ function MovieDetails({ movie = sampleMovie }) {
             </div>
           </dl>
         </section>
+        
+      </>
+      )}
+
       </main>
     </>
   );
