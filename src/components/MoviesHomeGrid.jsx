@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 
-function Movies() {
+function Movies({ movies }) {
   return (
     <section className="movies" aria-labelledby="movies-heading">
       <div className="movies__toolbar">
@@ -23,12 +23,11 @@ function Movies() {
       </div>
 
       <div className="movies__grid">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        {movies
+          ? movies.map((movie) => (
+            <MovieCard key={movie.imdbID} movie={movie} />
+          ))
+          : Array.from({ length: 6 }, (_, index) => <MovieCard key={index} />)}
       </div>
     </section>
   );

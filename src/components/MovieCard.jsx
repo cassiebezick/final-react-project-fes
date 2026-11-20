@@ -2,7 +2,11 @@ import poster from "../assets/northbound.png";
 import { FiArrowUpRight, FiArrowRight, FiFilm } from "react-icons/fi";
 import { Link } from "react-router";
 
-function MovieCard() {
+function MovieCard( { movie } ) {
+  const title = movie?.Title ?? "Northbound";
+  const year = movie?.Year ?? "2024";
+  const poster = movie ? movie.Poster : northboundPoster;
+
   return (
     <article className="movie-card">
       <div className="movie-card__ribbon" aria-hidden="true" />
@@ -24,13 +28,13 @@ function MovieCard() {
       />
 
       <div className="movie-card__content">
-        <h3 className="movie-card__title">Northbound</h3>
-        <p className="movie-card__year">2024</p>
+        <h3 className="movie-card__title">{title}</h3>
+        <p className="movie-card__year">{year}</p>
 
 
       <Link
         className="movie-card__button"
-        to="/movies/northbound"
+        to={`/movies/${movie?.imdbID ?? "northbound"}`}
         aria-label="View details for Northbound"
       >
         <span>View details</span>
