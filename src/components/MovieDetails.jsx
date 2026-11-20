@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { FiArrowLeft, FiStar } from "react-icons/fi";
 import poster from "../assets/northbound.png";
+import MoviePoster from "./MoviePoster";
 
 import "./MovieDetails.css";
 
@@ -19,6 +20,37 @@ const sampleMovie = {
   Language: "English",
   Poster: poster,
 };
+
+
+function MovieDetailsSkeleton() {
+  return (
+    <>
+      <p className="movie-details__loading-status" role="status">
+        Loading movie details…
+      </p>
+
+      <div className="movie-details__skeleton" aria-hidden="true">
+        <div className="movie-details__hero">
+          <div className="movie-details__poster movie-details__skeleton-poster" />
+
+          <div className="movie-details__overview movie-details__skeleton-lines">
+            <div className="movie-details__skeleton-line movie-details__skeleton-line--title" />
+            <div className="movie-details__skeleton-line movie-details__skeleton-line--short" />
+            <div className="movie-details__skeleton-line" />
+            <div className="movie-details__skeleton-line" />
+            <div className="movie-details__skeleton-line movie-details__skeleton-line--short" />
+          </div>
+        </div>
+
+        <div className="movie-details__info movie-details__skeleton-lines">
+          <div className="movie-details__skeleton-line movie-details__skeleton-line--short" />
+          <div className="movie-details__skeleton-line" />
+        </div>
+      </div>
+    </>
+  );
+}
+
 
 function MovieDetails() {
   const { imdbID } = useParams();
@@ -74,8 +106,7 @@ function MovieDetails() {
           Back to movies
         </Link>
         {error && <p role="alert">{error}</p>}
-        {!movie && !error && <p role="status">Loading movie details…</p>}
-
+        {!movie && !error && <MovieDetailsSkeleton />}
       {movie && (
           <>
 
